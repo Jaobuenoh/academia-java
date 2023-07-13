@@ -18,7 +18,6 @@ A aplicação consiste em um controle de estoque com foco em otimizar o gerencia
   
 ## Front end
 - HTML / CSS / JS /
-- SpringBoot
 - Bootstrap5
 
 
