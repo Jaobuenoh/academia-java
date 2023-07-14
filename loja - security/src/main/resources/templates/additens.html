@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style_register.css">
     <style>
         body {
-            background-image: url("https://i.redd.it/og61s4r1vpv01.jpg");
+            background-color: rgb(71, 39, 71);
             background-size: 1980px 1080px;
             background-position: top center;
         }
@@ -59,6 +59,26 @@
         height: 35px;
         }
 
+        .centro-button{
+
+            position: absolute;
+            left: 10%;
+            top: 10%;
+        }
+
+        .button-home{
+            position: relative;
+            left: 6px;
+            top: 350px;
+        }
+
+        .button-list{
+            position: relative;
+            left: 6px;
+            top: 305px;
+        }
+
+
 
 
     </style>
@@ -105,11 +125,11 @@
 
     <div class="button-container">
 
-        <form method="GET" action="/home">
+        <form class="centro-button" method="GET" action="/home">
             <button class="button-home btn btn-light m-1">Voltar para a Home</button>
         </form>
 
-        <form method="GET" action="/list">
+        <form class="centro-button" method="GET" action="/list">
             <button class="button-list btn btn-light m-1">Listar</button>
         </form>
     </div>

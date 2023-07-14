@@ -3,19 +3,20 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sistema de Gerenciamento de Estoque</title>
+    <title>Stock Controller</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style_register.css">
 
     <noscript>
 
-        <meta http-equiv="refresh" content="0;url=https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+        <meta http-equiv="refresh" content="0;url=http://localhost:8080/malandro_sem_script">
         
     </noscript>
 
     <style>
         body {
+            background-image: url("https://r4.wallpaperflare.com/wallpaper/279/264/950/purple-clouds-minimalism-wallpaper-4876dc8acfdca7695e10b99292391bd0.jpg");
             font-family: Arial, sans-serif;
             background-size: 1980px 1080px;
             background-position: top center;
@@ -23,10 +24,14 @@
         }
 
         h1 {
+            color: purple;
             text-align: center;
+            margin-top: 0px;
+            margin-bottom: 18px;
         }
 
         nav {
+
             background-color: #f2f2f2;
             padding: 3px;
 
@@ -91,7 +96,7 @@
 </head>
 <body>
 
-    <h1>Gerenciamento de Estoque</h1>
+    <h1>Stock Controller</h1>
     
     <nav>
         <ul>
@@ -113,7 +118,7 @@
 
                 <form method="POST" th:action="@{/logout}">
 
-                    <button type="submit">Logout</button>
+                    <button type="submit" class="btn btn-light py-2">Logout</button>
 
                 </form>
 
@@ -132,6 +137,7 @@
             </div>
 
          </div>
+
 
 </body>
 </html>
