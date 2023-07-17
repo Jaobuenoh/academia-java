@@ -29,11 +29,11 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .headers(headers -> headers.frameOptions().disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**", "/webjars/**").permitAll()
+                        .requestMatchers("/css/**", "", "/images/**", "", "").permitAll()
                         .requestMatchers("/").permitAll()
-                        .requestMatchers("/rss/**").permitAll()
-                        .requestMatchers("/register/**").permitAll()
-                        .requestMatchers("/posts/**").permitAll()
+                        .requestMatchers("").permitAll()
+                        .requestMatchers("").permitAll()
+                        .requestMatchers("").permitAll()
                         .anyRequest().authenticated()
                 );
         http
@@ -43,7 +43,7 @@ public class SecurityConfig {
                         .usernameParameter("email")
                         .passwordParameter("password")
                         .defaultSuccessUrl("/home")
-                        .failureUrl("/malandro_sem_script")
+                        .failureUrl("/login_error")
                         .permitAll()
                         .and()
                         .logout()
