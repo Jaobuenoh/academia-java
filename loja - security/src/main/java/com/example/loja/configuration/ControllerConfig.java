@@ -26,17 +26,9 @@ public class ControllerConfig {
      private AccountService accountService;
 
 
-
-    @GetMapping("/")
-    public ModelAndView login(){
-        ModelAndView mv = new ModelAndView("login");
-        return mv;
-    }
-
-
-    @GetMapping("/malandro_sem_script")
-    public ModelAndView noScript(){
-        ModelAndView mv = new ModelAndView("semscript");
+    @GetMapping("/c_soon")
+    public ModelAndView cSoon(){
+        ModelAndView mv = new ModelAndView("c_soon");
         return mv;
     }
 
@@ -49,6 +41,8 @@ public class ControllerConfig {
      // Register foi substituido de String para ModelAndView para retonar um objeto
      // Tal alteração se deve, pois se não for feita o mesmo gera uma exceção já que é possivel que seja algo nulo
      // Sendo assim é mais viavel colocar um ModelAndView, assim colocando um ItemEstoque() possibilitando um contrutor vazio
+    // Att - register foi movido para uma classe especifica.
+
     @GetMapping("/additens")
     public ModelAndView additens() {
         ModelAndView mv = new ModelAndView("additens");
@@ -56,12 +50,11 @@ public class ControllerConfig {
         return mv;
     }
 
-//If you can read, you already now what this /register do...
+//If you can read, you already now what this /additens do...
     @PostMapping("/additens")
     public String register (ItemEstoque itemEstoque, Principal principal) {
 
-        //Até o Diabo tem medo do que esse if ta fazendo
-        // Aparentemente, segundo o GPT e as vozes da minha cabeça, esse if verifica se o ID já existe, coleta o mesmo no banco,
+        // Esse if verifica se o ID já existe, coleta o mesmo no banco,
         // coloca ele no HTML que já esta mapeado com o thymeleaf, alias, não só ele, seguindo <tr> o mesmo puxa todos os atributos da tabela -
         // lembrado que o ID esta com type hidden para não aparecer - puxando todos os elementos o mesmo apenas substitui o que for desejado,
         // depois armazena novamente com as modificações desejadas.
@@ -70,7 +63,7 @@ public class ControllerConfig {
             ItemEstoque itemEstoqueid = serviceController.findId(itemEstoque.getId_item_estoque()).orElseThrow(() -> new IllegalArgumentException(" Item: " + itemEstoque.getId_item_estoque() + "Não localizado"));
             serviceController.save(itemEstoque);
         }else {
-
+         // Básicamente coletar o usuário e atrelar ao item que ele adicionou
             String logged = "mistério";
 
             if (principal != null){

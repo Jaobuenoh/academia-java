@@ -6,9 +6,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style_register.css">
+
+    <noscript>
+
+        <meta http-equiv="refresh" content="0;url=http://localhost:8080/malandro_sem_script">
+        
+    </noscript>
+
     <style>
         body {
-            background-color: rgb(71, 39, 71);
+            background-color: #343a40;
             background-size: 1980px 1080px;
             background-position: top center;
             padding: 100px
@@ -16,8 +23,8 @@
         }
 
         table, th, tr, td {
-            background-color: hotpink;
-            opacity: 1.;
+            background-color: #46494d;
+            opacity: 1;
             border: 1px solid black;
 
         }
@@ -26,6 +33,17 @@
             text-align: center;
         }
 
+        div.busca{
+            position: relative;
+
+            top: -10px;
+            left: 8px;
+            
+        }
+
+        
+        
+
 
     </style>
 
@@ -33,7 +51,27 @@
 <body>
 
 <form method="GET" action="/list">
-    <table class="table">
+    <table id="table-id" class="table">
+
+        <div class="busca">
+            <div class="col-sm-12 row">
+              
+                <input type="text" id="inputItemId" onkeyup="procurarItemId()"
+                    placeholder="Localizar pelo número" title="Type in a name"
+                    class="form-control w-25 mb-2 m-2" /> 
+                   
+                    <input type="text" id="inputNome" onkeyup="procurarItemNome()"
+                    placeholder="Localizar pelo nome" title="Type in a name"
+                    class="form-control w-50  mb-2 m-2" />
+                    
+                  
+            </div>
+            
+        </div>
+
+        
+
+        
         <thead>
         <tr>
             <th class="list-name" scope="col">#</th>
@@ -70,6 +108,15 @@
         <button type="submit" class="btn btn-dark">Cadastar Novamente</button>
     </div>
 </form>
+
+<div class="d-flex justify-content-center position-home">
+
+  <form class="centro-button" method="GET" action="/home">
+      <button class="btn btn-danger m-3">Home</button>
+  </form>
+
+
+</div>
 
 <div class="container-fluid d-flex flex-column vh-100"></div>
   
@@ -109,6 +156,50 @@
             return false;
         }
     }
+
+
+    // Busca do items e suas especificações
+
+    function procurarItemNome() {
+  var input, toUpperCase, table, tr, td, i, thingValue;
+  input = document.getElementById("inputNome");
+  toUpperCase = input.value.toUpperCase();
+  table = document.getElementById("table-id");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+        thingValue = td.textContent || td.innerText;
+      if (thingValue.toUpperCase().indexOf(toUpperCase) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+function procurarItemId() {
+  var input, toUpperCase, table, tr, td, i, thingValue;
+  input = document.getElementById("inputItemId");
+  toUpperCase = input.value.toUpperCase();
+  table = document.getElementById("table-id");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+        thingValue = td.textContent || td.innerText;
+      if (thingValue.toUpperCase().indexOf(toUpperCase) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+
+
 </script>
 
 </body>

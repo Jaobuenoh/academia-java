@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class RegisterConfig {
-
+// a ser implementado
     @Autowired
     private AccountService accountService;
 
@@ -26,6 +26,6 @@ public class RegisterConfig {
     public String registerUser(@ModelAttribute Account account){
         accountService.save(account);
 
-        return "redirect:/pagina que você deseja";
+        return "redirect:/login";
     }
 }

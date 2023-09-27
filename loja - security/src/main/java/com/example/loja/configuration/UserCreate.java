@@ -45,6 +45,7 @@ public class UserCreate implements CommandLineRunner {
         account1.setLastName("user");
         account1.setEmail("user.user@domain.com");
         account1.setPassword("user");
+        account1.setId(1L);
 
         Set<Authority> authorities_1 = new HashSet<>();
         authorityRepository.findById("ROLE_USER").ifPresent(authorities_1::add);
@@ -56,6 +57,7 @@ public class UserCreate implements CommandLineRunner {
         account2.setLastName("admin");
         account2.setEmail("admin.admin@domain.com");
         account2.setPassword("admin");
+        account2.setId(2L);
 
         Set<Authority> authorities_2 = new HashSet<>();
         authorityRepository.findById("ROLE_USER").ifPresent(authorities_2::add);
