@@ -4,6 +4,7 @@ package com.demo.dashboard.controller;
 import com.demo.dashboard.model.ItemEstoque;
 import com.demo.dashboard.services.ItemService;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 
-@RestController
+@Controller
 public class AppControll {
 
     private final ItemService itemService;
@@ -40,17 +41,6 @@ public class AppControll {
     // sera necessário verificar como consumir esse arquivo json corretamente para exibir no gráfico
     // estamos chegando a algum lugar eu acho
 
-    @GetMapping("/api/list")
-    @ResponseBody
-    public List<ItemEstoque> listaItensJSON() {
-        Iterable<ItemEstoque> iterableItens = itemService.getAll();
-        List<ItemEstoque> listaItens = new ArrayList<>();
-
-        iterableItens.forEach(listaItens::add);
-
-        return listaItens;
-    }
-
 
 
     @GetMapping("/index")
@@ -60,7 +50,6 @@ public class AppControll {
         return mv;
     }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @GetMapping("/registro")
     public ModelAndView addItens() {
