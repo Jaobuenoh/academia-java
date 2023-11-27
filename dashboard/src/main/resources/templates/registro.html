@@ -4,143 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style_registro.css">
+    <link rel="stylesheet" href="/css/styleRegistro.css">
     <title>Registro</title>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica&family=IM+Fell+Great+Primer&display=swap');
-
-
-        /*Reset CSS e Padrões*/
-        * {
-            margin: 0px;
-            padding: 0px;
-            box-sizing: content-box;
-            font-size: 20px;
-            font-family: "IM Fell Great Primer";
-
-        }
-
-        /*Reset CSS e Padrões*/
-
-        /*---------------------------*/
-
-        /* Corpo da página */
-
-
-        body {
-
-            width: 100vw;
-            height: 100vh;
-
-
-        }
-
-        .container {
-
-            display: flex;
-            height: 100%;
-            min-height: 100vh;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #343a40;
-
-
-
-
-        }
-
-        .register-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            /*Espaço entre os inputs*/
-            margin: 5px 10px 5px 10px;
-
-
-
-        }
-
-        .footer-container {
-            display: flex;
-            width: 100%;
-            margin-top: auto;
-            background-color: #333;
-            padding: 0px;
-            justify-content: end;
-            color: white;
-            border-radius: 5px;
-            background-color: rgb(49, 43, 43);
-        }
-
-        /* Corpo da página */
-
-        /*---------------------------*/
-
-        /* Titulos | botões | Textos */
-
-
-        h2 {
-            padding: 7px;
-            margin: 5px;
-            background-color: #343a40;
-            text-align: center;
-            font-size: 20px;
-            text-shadow: -0px 0px 4px white;
-            border-radius: 10px;
-        }
-
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            margin-top: 40px;
-            /*Margin entre Cadastrar /---/ Voltar para o Home*/
-            gap: 5px;
-            text-align: center;
-            margin-bottom: 10px;
-
-        }
-
-        .button-cadastrar {
-            margin: 0px 30px 0px 30px;
-
-        }
-
-        input,
-        button {
-            border-radius: 6px;
-            /*Bordas*/
-            padding: 2px;
-        }
-
-        .sub-container,
-        form-post-container {
-            margin-top: 10%;
-            border: 10px solid rgb(49, 43, 43);
-            /*rgb(110, 103, 93);*/
-            /*Bordas*/
-            background-color: #494e53;
-            border-radius: 10px;
-
-        }
-
-        /* Titulos | botões | Textos */
-    </style>
 </head>
 
 
 <body>
+    <!-- COMECO DO ESTILO PADRÃO ENTRE PAGINAS -->
+    <header id="header" class="header">
+        <h1 id="header-h1">Stock Controller</h1>
+        <nav class="navegacao">
+            <div>
+                <form method="GET" action="/home">
+                    <button class="nav-botao-home">Home</button>
+                </form>
+            </div>
+            <div class="teste">
+                <ul class="nav-menu">
+                    <li id="teste" class="item-menu">
+                        <form class="centro-button" method="GET" action="/c_soon">
+                            <button class="nav-botao" method="GET" action="/c_soon">Cadastrar Fornecedor</button>
+                        </form>
+                    </li>
+                    <li class="item-menu">
+                        <form method="GET" action="/registro">
+                            <button type="submit" class="nav-botao" method="GET" action="/additens">Cadastar Item</button>
+                        </form>
+                    </li>
+                    <li class="item-menu">
+                        <form class="centro-button" method="GET" action="/c_soon">
+                            <button class="nav-botao" method="GET" action="/c_soon">Listar Fornecedor</button>
+                        </form>
+                    </li>
+                    <li class="item-menu">
+                        <form method="GET" action="/list">
+                            <button type="submit" class="nav-botao" method="GET" action="/list">Lista Itens</button>
+                        </form>
+                    </li>
+                    <!-- <li sec:authorize="isAuthenticated()">
+                        <form method="POST" th:action="@{/logout}">
+                            <a type="submit" class="btn btn-light py-2 test-position">Logout</a>
+                        </form>
+                    </li> -->
+                </ul>
+            </div>
+            <div id="invisible-box"></div>
+        </nav>
+    </header>
+    <!-- FINAL DO ESTILO PADRÃO ENTRE PAGINAS -->
 
-    <div class="container">
-
-
-        <div class="sub-container">
-
-
+    <main class="container">
+        <section class="sub-container">
             <form class="form-post-container" method="POST" action="/registro" th:object="${itemEstoque}">
-
                 <h2 class="titulo">Adicionar Item do Estoque</h2>
                 <div class="register-container">
                     <div>
@@ -149,52 +64,38 @@
                     </div>
                     <div>
                         <label for="nome"></label>
-                        <input type="text" id="nome" name="lote_item_estoque"
-                            th:value="${itemEstoque.lote_item_estoque}" placeholder=" lote do Item">
+                        <input type="text" id="nome" name="lote_item_estoque" th:value="${itemEstoque.lote_item_estoque}" placeholder="Lote do Item">
                     </div>
                     <div>
                         <label for="descricao"></label>
-                        <input type="text" id="descricao" name="quantidade_item_estoque"
-                            th:value="${itemEstoque.quantidade_item_estoque}" placeholder=" quantidade do Item">
+                        <input type="text" id="descricao" name="quantidade_item_estoque" th:value="${itemEstoque.quantidade_item_estoque}" placeholder="Quantidade">
                     </div>
                     <div>
                         <label for="preco"></label>
-                        <input type="text" id="preco" name="data_entrada_item_estoque"
-                            th:value="${itemEstoque.data_entrada_item_estoque}" placeholder=" data do Item">
+                        <input type="text" id="preco" name="data_entrada_item_estoque" th:value="${itemEstoque.data_entrada_item_estoque}" placeholder="Data de Fabricação">
                     </div>
                     <div>
                         <label for="quantidade"></label>
-                        <input type="text" id="quantidade" name="validade_item_estoque"
-                            th:value="${itemEstoque.validade_item_estoque}" placeholder=" validade do Item">
+                        <input type="text" id="quantidade" name="validade_item_estoque" th:value="${itemEstoque.validade_item_estoque}" placeholder="Data de Validade">
+                    </div>
+                    <div>
+                        <label for="columnNameSelect"></label>
+                        <select id="columnNameSelect" onchange="displaySelectedColumn()" th:value="${itemEstoque.tipoItemEstoque}"></select>
                     </div>
 
                     <button type="submit" class="button-cadastrar">Cadastrar</button>
                 </div>
             </form>
 
+        </section>
 
-            <div class="button-container">
-
-                <form method="GET" action="/home">
-                    <button>Voltar para a Home</button>
-                </form>
-
-                <form method="GET" action="/list">
-                    <button>Listar</button>
-                </form>
-
-            </div>
-
-
-        </div>
-
-
-        <footer class="footer-container">
-            <div> Farofa </div>
+        <footer>
+            <h1 id="footer-h1">Alguns Direitos Reservados</h1>
         </footer>
+    </main>
 
-    </div>
 
+    <script src="/js/scriptRegistro.js"></script>
 </body>
 
 
