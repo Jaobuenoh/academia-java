@@ -41,9 +41,11 @@ public class AppControll {
 
 
     @GetMapping("/registro")
-    public ModelAndView addItens() {
+    public ModelAndView registro() {
         ModelAndView mv = new ModelAndView("registro");
         mv.addObject("itemEstoque", new ItemEstoque());
+        mv.addObject("tipoItemEstoque", new TipoItemEstoque());
+
         return mv;
     }
 

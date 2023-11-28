@@ -28,7 +28,7 @@
                     </li>
                     <li class="item-menu">
                         <form method="GET" action="/registro">
-                            <button type="submit" class="nav-botao" method="GET" action="/additens">Cadastar Item</button>
+                            <button type="submit" class="nav-botao" method="GET" action="/registro">Cadastar Item</button>
                         </form>
                     </li>
                     <li class="item-menu">
@@ -55,7 +55,7 @@
 
     <main class="container">
         <section class="sub-container">
-            <form class="form-post-container" method="POST" action="/registro" th:object="${itemEstoque}">
+            <form class="form-post-container" method="POST" action="/registro" th:object="${itemEstoque}, ${tipoItemEstoque}">
                 <h2 class="titulo">Adicionar Item do Estoque</h2>
                 <div class="register-container">
                     <div>
@@ -80,7 +80,11 @@
                     </div>
                     <div>
                         <label for="columnNameSelect"></label>
-                        <select id="columnNameSelect" onchange="displaySelectedColumn()" th:value="${itemEstoque.tipoItemEstoque}"></select>
+                        <select id="columnNameSelect" name="tipoItemEstoque">
+                        <option th:each="option : ${tipoItemEstoque}"
+                                th:value="${tipoItemEstoque.id_tipo_item_estoque}"
+                                th:text="${tipoItemEstoque.descricao_tipo_item_estoque}"></option>
+                        </select>
                     </div>
 
                     <button type="submit" class="button-cadastrar">Cadastrar</button>
