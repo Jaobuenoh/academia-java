@@ -7,7 +7,7 @@ body {
   margin: 0;
   height: 100vh;
   position: relative;
-  background-image: url(/img/fingerprintLaranja.svg);
+  background-image: url(/images/fingerprintLaranja.svg);
 }
 
 body::after {

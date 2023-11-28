@@ -44,6 +44,7 @@ public class AppControll {
     public ModelAndView addItens() {
         ModelAndView mv = new ModelAndView("registro");
         mv.addObject("itemEstoque", new ItemEstoque());
+        mv.addObject("tipoItemEstoque", new TipoItemEstoque());
         return mv;
     }
 

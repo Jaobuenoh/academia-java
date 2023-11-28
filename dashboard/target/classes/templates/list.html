@@ -79,6 +79,7 @@
             <th class="list-name" scope="col">Quantidade</th>
             <th class="list-name" scope="col">Data Lote</th>
             <th class="list-name" scope="col">Validade</th>
+            <th class="list-name" scope="col">Tipo de Item</th>
             <th class="list-name" scope="col">Edit/Delete</th>
         </tr>
         </thead>
@@ -89,6 +90,7 @@
             <td data-th-text="${itemEstoque.quantidade_item_estoque}"></td>
             <td data-th-text="${itemEstoque.data_entrada_item_estoque}"></td>
             <td data-th-text="${itemEstoque.validade_item_estoque}"></td>
+            <td data-th-text="${itemEstoque.tipoItemEstoque.descricao_tipo_item_estoque}"></td>
             <td>
                 <a class="btn btn-dark" th:href="@{'/edit/'+${itemEstoque.id_item_estoque}}" onclick="confirmEdit(event)"> Edit </a>
 

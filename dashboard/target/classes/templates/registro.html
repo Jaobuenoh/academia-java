@@ -22,7 +22,7 @@
             <div class="teste">
                 <ul class="nav-menu">
                     <li id="teste" class="item-menu">
-                        <form id="teste" class="centro-button" method="GET" action="/c_soon">
+                        <form class="centro-button" method="GET" action="/c_soon">
                             <button class="nav-botao" method="GET" action="/c_soon">Cadastrar Fornecedor</button>
                         </form>
                     </li>
@@ -80,7 +80,11 @@
                     </div>
                     <div>
                         <label for="columnNameSelect"></label>
-                        <select id="columnNameSelect" onchange="displaySelectedColumn()" th:value="${itemEstoque.tipoItemEstoque}"></select>
+                        <select id="columnNameSelect" name="tipoItemEstoque">
+                            <option th:each="option : ${tipoItemEstoque}"
+                                    th:value="${tipoItemEstoque.id_tipo_item_estoque}"
+                                    th:text="${tipoItemEstoque.descricao_tipo_item_estoque}"></option>
+                        </select>
                     </div>
 
                     <button type="submit" class="button-cadastrar">Cadastrar</button>
