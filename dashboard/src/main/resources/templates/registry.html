@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styleRegistro.css">
+    <title>Registro</title>
+</head>
+
+
+<body>
+    <!-- COMECO DO ESTILO PADRÃO ENTRE PAGINAS -->
+    <header id="header" class="header">
+        <h1 id="header-h1">Stock Controller</h1>
+        <nav class="navegacao">
+            <div>
+                <form method="GET" action="/home">
+                    <button class="nav-botao-home">Home</button>
+                </form>
+            </div>
+            <div class="teste">
+                <ul class="nav-menu">
+                    <li id="teste" class="item-menu">
+                        <form class="centro-button" method="GET" action="/c_soon">
+                            <button class="nav-botao" method="GET" action="/c_soon">Cadastrar Fornecedor</button>
+                        </form>
+                    </li>
+                    <li class="item-menu">
+                        <form method="GET" action="/registry">
+                            <button type="submit" class="nav-botao" method="GET" action="/registry">Cadastar Item</button>
+                        </form>
+                    </li>
+                    <li class="item-menu">
+                        <form class="centro-button" method="GET" action="/c_soon">
+                            <button class="nav-botao" method="GET" action="/c_soon">Listar Fornecedor</button>
+                        </form>
+                    </li>
+                    <li class="item-menu">
+                        <form method="GET" action="/list">
+                            <button type="submit" class="nav-botao" method="GET" action="/list">Lista Itens</button>
+                        </form>
+                    </li>
+                    <!-- <li sec:authorize="isAuthenticated()">
+                        <form method="POST" th:action="@{/logout}">
+                            <a type="submit" class="btn btn-light py-2 test-position">Logout</a>
+                        </form>
+                    </li> -->
+                </ul>
+            </div>
+            <div id="invisible-box"></div>
+        </nav>
+    </header>
+    <!-- FINAL DO ESTILO PADRÃO ENTRE PAGINAS -->
+
+    <main class="container">
+        <section class="sub-container">
+            <form class="form-post-container" method="POST" action="/registry" th:object="${itemEstoque}">
+                <h2 class="titulo">Adicionar Item do Estoque</h2>
+                <div class="register-container">
+                    <div>
+                        <label></label>
+                        <input type="hidden" th:value="${itemEstoque.id_item_estoque}" name="id_item_estoque" />
+                    </div>
+                    <div>
+                        <label for="nome"></label>
+                        <input type="text" id="nome" name="lote_item_estoque" th:value="${itemEstoque.lote_item_estoque}" placeholder="Lote do Item">
+                    </div>
+                    <div>
+                        <label for="descricao"></label>
+                        <input type="text" id="descricao" name="quantidade_item_estoque" th:value="${itemEstoque.quantidade_item_estoque}" placeholder="Quantidade">
+                    </div>
+                    <div>
+                        <label for="preco"></label>
+                        <input type="text" id="preco" name="data_entrada_item_estoque" th:value="${itemEstoque.data_entrada_item_estoque}" placeholder="Data de Fabricação">
+                    </div>
+                    <div>
+                        <label for="quantidade"></label>
+                        <input type="text" id="quantidade" name="validade_item_estoque" th:value="${itemEstoque.validade_item_estoque}" placeholder="Data de Validade">
+                    </div>
+                    <div>
+                        <label for="columnNameSelect"></label>
+                        <select id="columnNameSelect" name="tipoItemEstoque">
+                            <option th:each="option : ${tipoItemEstoque}"
+                                    th:value="${tipoItemEstoque.id_tipo_item_estoque}"
+                                    th:text="${tipoItemEstoque.descricao_tipo_item_estoque}"></option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="button-cadastrar">Cadastrar</button>
+                </div>
+            </form>
+
+        </section>
+
+        <footer>
+            <h1 id="footer-h1">Alguns Direitos Reservados</h1>
+        </footer>
+    </main>
+
+
+    <script src="/js/scriptRegistro.js"></script>
+</body>
+
+
+</html>

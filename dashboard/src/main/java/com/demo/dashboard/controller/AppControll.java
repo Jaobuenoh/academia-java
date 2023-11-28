@@ -40,15 +40,16 @@ public class AppControll {
     }
 
 
-    @GetMapping("/registro")
-    public ModelAndView addItens() {
-        ModelAndView mv = new ModelAndView("registro");
+    @GetMapping("/registry")
+    public ModelAndView registry() {
+        ModelAndView mv = new ModelAndView("registry");
         mv.addObject("itemEstoque", new ItemEstoque());
         mv.addObject("tipoItemEstoque", new TipoItemEstoque());
+
         return mv;
     }
 
-    @PostMapping("/registro")
+    @PostMapping("/registry")
     public String register(ItemEstoque itemEstoque) {
 
        itemService.save(itemEstoque);
