@@ -6,7 +6,7 @@ body {
   margin: 0;
   height: 100vh;
   position: relative;
-  background-image: url(/images/fingerprintRoxa.svg);
+  background-image: url(/images/fingerprintLaranja.svg);
 }
 
 body::after {
@@ -21,22 +21,17 @@ h1 {
   font-weight: 900;
   margin: 0;
   text-decoration: none;
-  color: #55b3f3;
-}
-
-#header-h1 {
-  padding-bottom: 20px;
-}
-
-#header {
-  padding: 10px 0px 20px;
+  color: #f2f2f2;
 }
 
 .header {
-  background: #f2f6f7;
+  background: #212832;
+  padding: 10px 0px 20px;
 }
 
 .nav-menu {
+  padding: 0;
+  margin: 0;
   display: flex;
   justify-content: center;
   gap: 35px;
@@ -47,19 +42,24 @@ h1 {
 }
 
 .nav-botao {
+  padding-block: 0;
+  padding-inline: 0;
+  border: none;
   text-decoration: none;
-  color: #f2f6f7;
-  background: #6356e4;
+  color: #f2f2f2;
+  background: #f96c00;
   padding: 15px 30px;
   border-radius: 5px;
   text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
 }
 
 /* estilo aplicado quando passa o mouse por cima do botao */
 .nav-botao:hover {
   cursor: pointer;
-  background: #40abf2;
-  color: #eff4f5;
+  background: #cc5800;
+  color: #e6e6e6;
   transition: 0.3s;
 }
 
@@ -71,8 +71,8 @@ h1 {
   left: 15px;
   text-decoration: none;
   font-size: 1rem;
-  color: #f2f6f7;
-  background: #6356e4;
+  color: #f2f2f2;
+  background: #f96c00;
   padding: 15px 15px;
   border-radius: 10px;
   text-transform: uppercase;
@@ -85,9 +85,29 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: #f2f6f7;
+  background: #212832;
 }
 
 #footer-h1 {
   padding: 15px 0 10px;
+}
+
+.img_ferramenta{
+
+
+
+}
+
+.container_ferramenta {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.titulo {
+
+  text-align: center;
 }
