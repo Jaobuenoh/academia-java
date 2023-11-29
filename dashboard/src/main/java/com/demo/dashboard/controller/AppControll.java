@@ -4,6 +4,7 @@ package com.demo.dashboard.controller;
 import com.demo.dashboard.model.ItemEstoque;
 import com.demo.dashboard.services.ItemService;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 
-@RestController
+@Controller
 public class AppControll {
 
     private final ItemService itemService;
@@ -34,22 +35,6 @@ public class AppControll {
         return mv;
     }
 
-    // Foi alterado de @Controller para o @Rest,logo os mapeamentos
-    // "redirect:/algumaCoisa" não estão sendo redirecionados para a
-    // URL, mas sim exibindo o dado na tela como se fosse json ou algo assim.
-    // sera necessário verificar como consumir esse arquivo json corretamente para exibir no gráfico
-    // estamos chegando a algum lugar eu acho
-
-    @GetMapping("/api/list")
-    @ResponseBody
-    public List<ItemEstoque> listaItensJSON() {
-        Iterable<ItemEstoque> iterableItens = itemService.getAll();
-        List<ItemEstoque> listaItens = new ArrayList<>();
-
-        iterableItens.forEach(listaItens::add);
-
-        return listaItens;
-    }
 
 
 
@@ -60,7 +45,6 @@ public class AppControll {
         return mv;
     }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @GetMapping("/registro")
     public ModelAndView addItens() {
@@ -96,16 +80,6 @@ public class AppControll {
 
     }
 
-    @GetMapping("/dashboard")
-    public String barGrafh (Model model) {
-        Map<String, Integer> surveyMap = new LinkedHashMap<>();
-        surveyMap.put("Java", 40);
-        surveyMap.put(".Net", 25);
-        surveyMap.put("Python", 20);
-        surveyMap.put("Dev oops", 15);
-        model.addAttribute("surveyMap", surveyMap);
-        return "barGraph";
-    }
 
     @GetMapping("/error")
     public ModelAndView error () {
