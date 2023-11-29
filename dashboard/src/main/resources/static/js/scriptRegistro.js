@@ -17,3 +17,14 @@ function displaySelectedColumn() {
   var selectedRowId = columnNameSelect.value;
   console.log("Selected Fornecedor ID:", selectedRowId);
 }
+
+function toggle() {
+  var blurHeader = document.getElementById("header");
+  blurHeader.classList.toggle("active");
+  var blurMain = document.getElementById("main");
+  blurMain.classList.toggle("active");
+  var blurFooter = document.getElementById("footer");
+  blurFooter.classList.toggle("active");
+  var popup = document.getElementById("popup");
+  popup.classList.toggle("active");
+}

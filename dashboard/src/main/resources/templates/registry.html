@@ -53,9 +53,9 @@
     </header>
     <!-- FINAL DO ESTILO PADRÃO ENTRE PAGINAS -->
 
-    <main class="container">
+    <main id="main" class="container">
         <section class="sub-container">
-            <form class="form-post-container" method="POST" action="/registry" th:object="${itemEstoque}">
+            <form class="form-post-container" method="POST" action="/registry">
                 <h2 class="titulo">Adicionar Item do Estoque</h2>
                 <div class="register-container">
                     <div>
@@ -78,26 +78,44 @@
                         <label for="quantidade"></label>
                         <input type="text" id="quantidade" name="validade_item_estoque" th:value="${itemEstoque.validade_item_estoque}" placeholder="Data de Validade">
                     </div>
-                    <div>
+                    <div class="tipoItem">
                         <label for="columnNameSelect"></label>
                         <select id="columnNameSelect" name="tipoItemEstoque">
-                            <option th:each="option : ${tipoItemEstoque}"
-                                    th:value="${tipoItemEstoque.id_tipo_item_estoque}"
-                                    th:text="${tipoItemEstoque.descricao_tipo_item_estoque}"></option>
+                            <option th:each="option : ${tipoItemEstoque}" th:value="${tipoItemEstoque.id_tipo_item_estoque}" th:text="${tipoItemEstoque.descricao_tipo_item_estoque}"></option>
                         </select>
+                        <div>
+                            <a class="novoTipoItem" onclick="toggle()">Novo</a>
+                        </div>
                     </div>
 
                     <button type="submit" class="button-cadastrar">Cadastrar</button>
                 </div>
             </form>
-
         </section>
-
-        <footer>
-            <h1 id="footer-h1">Alguns Direitos Reservados</h1>
-        </footer>
     </main>
+    <section id="popup">
+        <section class="popup-sub-container">
+            <!-- O Form abaixo vai ser arrumado apos o metodo estar certo -->
+            <!-- <form class="form-post-container" method="POST" action="/registry" th:object="${itemEstoque}"> -->
+            <h2>Cadastrar Tipo de Item</h2>
+            <div class="tabela-tipoitem">
+                <div>
+                    <label></label>
+                    <input type="hidden" />
+                </div>
+                <div>
+                    <label for="descricao"></label>
+                    <input type="text" id="descricao-tipo" name="descricao_tipo_item_estoque" placeholder="Descrição" />
+                </div>
+                <button type="submit" class="popup-cadastrar">Cadastrar</button>
+                <a class="popup-cadastrar" onclick="toggle()">Cancelar</a>
+            </div>
+        </section>
+    </section>
 
+    <footer id="footer">
+        <h1 id="footer-h1">Alguns Direitos Reservados</h1>
+    </footer>
 
     <script src="/js/scriptRegistro.js"></script>
 </body>

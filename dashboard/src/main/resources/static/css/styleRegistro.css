@@ -25,10 +25,6 @@ h1 {
   color: #f2f2f2;
 }
 
-#header-h1 {
-  padding-bottom: 20px;
-}
-
 .header {
   padding: 10px 0px 20px;
   background: #212832;
@@ -130,12 +126,59 @@ footer {
   font-weight: 700;
   text-decoration: none;
   color: #f2f2f2;
+  position: relative;
+}
+
+.sub-container h2::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 110px;
+  display: inline-block;
+  left: 0;
+  bottom: 0;
+  background-color: #cc5800;
 }
 
 .register-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.register-container input,
+select {
+  width: 100%;
+  padding: 10px 15px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#columnNameSelect {
+  border: 0;
+}
+
+.tipoItem {
+  display: flex;
+}
+
+.tipoItem div {
+  display: flex;
+  flex-wrap: wrap;
+  place-content: center;
+}
+
+.novoTipoItem {
+  margin-left: 10px;
+  color: #f2f2f2;
+  background: #f96c00;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 15px;
 }
 
 .button-cadastrar {
@@ -150,4 +193,115 @@ footer {
   text-transform: uppercase;
   cursor: pointer;
   outline: none;
+}
+
+.button-cadastrar:hover {
+  cursor: pointer;
+  background: #cc5800;
+  color: #e6e6e6;
+  transition: 0.3s;
+}
+
+/* COMECO DO ESTILO DO POPUP CADASTRAR TIPO DE ITEM */
+#popup {
+  display: grid;
+  place-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.1s;
+}
+
+.popup-sub-container {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-55%, -50%);
+  box-shadow: 0 5px 30px #212832;
+  background: #212832;
+  padding: 5px;
+  margin: 15px;
+  border: solid #f96c00;
+  border-radius: 4px;
+}
+
+.popup-sub-container h2 {
+  margin: 0 0 15px 0;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-weight: 700;
+  text-decoration: none;
+  color: #f2f2f2;
+  position: relative;
+}
+
+.popup-sub-container h2::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 110px;
+  display: inline-block;
+  left: 0;
+  bottom: 0;
+  background-color: #cc5800;
+}
+
+.tabela-tipoitem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tabela-tipoitem input {
+  width: 100%;
+  padding: 10px 15px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.popup-cadastrar {
+  padding-block: 0;
+  padding-inline: 0;
+  border: none;
+  text-decoration: none;
+  color: #f2f2f2;
+  background: #f96c00;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+}
+
+.popup-cadastrar:hover {
+  cursor: pointer;
+  background: #cc5800;
+  color: #e6e6e6;
+  transition: 0.3s;
+}
+/* FINAL DO ESTILO DO POPUP CADASTRAR TIPO DE ITEM */
+
+#header.active {
+  filter: blur(20px);
+  pointer-events: none;
+  user-select: none;
+}
+
+#main.active {
+  filter: blur(20px);
+  pointer-events: none;
+  user-select: none;
+}
+
+#footer.active {
+  filter: blur(20px);
+  pointer-events: none;
+  user-select: none;
+}
+
+#popup.active {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
 }
