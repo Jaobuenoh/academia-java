@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Document</title>
+
+    <style>
+        .grafico_sty {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="grafico_sty">
+
+        <canvas id="grafico_1"> </canvas>
+
+    </div>
+
+
+    <script>
+
+        const ctx = document.getElementById('grafico_1');
+
+        const labelsX = ['Quantidade'];
+        const valores = [0];
+
+
+        const grafico_1 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labelsX,
+                datasets: [{
+                    label: '# of Votes',
+                    data: valores,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+        fetch('http://localhost:8080/api/list')
+            .then(response => response.json())
+            .then(data => {
+
+                const itemEstoque = data[0];
+
+                let id = itemEstoque.id_item_estoque;
+                let lote = itemEstoque.lote_item_estoque;
+                let quantidade = parseInt(itemEstoque.quantidade_item_estoque);
+                let dataEntrada = itemEstoque.data_entrada_item_estoque;
+                let validade = itemEstoque.validade_item_estoque;
+
+                console.log(id, lote, quantidade, dataEntrada, validade);
+
+                valores[0] = quantidade;
+
+                grafico_1.update();
+
+
+            })
+            .catch(erro => {
+                alert("Não foi possível obter dados, coletar erro do console e consultar responsável");
+                console.log("ERRO: " + erro);
+            });
+
+
+    </script>
+
+</body>
+
+</html>

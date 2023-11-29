@@ -35,6 +35,14 @@ public class AppControll {
         return mv;
     }
 
+<<<<<<< HEAD
+=======
+    // Foi alterado de @Controller para o @Rest,logo os mapeamentos
+    // "redirect:/algumaCoisa" não estão sendo redirecionados para a
+    // URL, mas sim exibindo o dado na tela como se fosse json ou algo assim.
+    // sera necessário verificar como consumir esse arquivo json corretamente para exibir no gráfico
+    // estamos chegando a algum lugar eu acho
+>>>>>>> 0e6bbacbfb22543b476c33881cec582ecb7cc38f
 
 
 
