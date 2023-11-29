@@ -1,5 +1,6 @@
 package com.demo.dashboard.model;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +24,9 @@ public class ItemEstoque {
     private String data_entrada_item_estoque;
     private String validade_item_estoque;
 
+    @ManyToOne
+    @JoinColumn(name = "tipo_item_estoque", referencedColumnName = "id_tipo_item_estoque", nullable = true)
+    private TipoItemEstoque tipoItemEstoque;
 
     public ItemEstoque(String lote_item_estoque, String quantidade_item_estoque, String data_entrada_item_estoque, String validade_item_estoque) {
         this.lote_item_estoque = lote_item_estoque;

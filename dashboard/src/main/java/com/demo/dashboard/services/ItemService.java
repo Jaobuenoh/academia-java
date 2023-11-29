@@ -5,6 +5,7 @@ import com.demo.dashboard.model.ItemEstoque;
 import com.demo.dashboard.repository.ItemEstoqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -14,6 +15,7 @@ public class ItemService {
     @Autowired
     private ItemEstoqueRepository itemEstoqueRepository;
 
+    @Transactional
     public Iterable<ItemEstoque> getAll(){
         return itemEstoqueRepository.findAll();
     }
