@@ -2,6 +2,7 @@ package com.demo.dashboard.controller;
 
 
 import com.demo.dashboard.model.ItemEstoque;
+import com.demo.dashboard.model.TipoItemEstoque;
 import com.demo.dashboard.services.ItemService;
 
 import org.springframework.stereotype.Controller;
@@ -12,10 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @Controller
@@ -51,13 +49,14 @@ public class AppControll {
 
 
     @GetMapping("/registro")
-    public ModelAndView addItens() {
+    public ModelAndView registro() {
         ModelAndView mv = new ModelAndView("registro");
         mv.addObject("itemEstoque", new ItemEstoque());
+        mv.addObject("tipoItemEstoque", new TipoItemEstoque());
         return mv;
     }
 
-    @PostMapping("/registro")
+    @PostMapping("/register")
     public String register(ItemEstoque itemEstoque) {
 
         itemService.save(itemEstoque);
@@ -81,6 +80,16 @@ public class AppControll {
         ItemEstoque itemEstoque = itemService.findItemOrThrow(id);
 
         return "/list";
+
+    }
+
+    @GetMapping("/edit/{id}")
+    public ModelAndView editar(@PathVariable("id") Long id) {
+        ModelAndView mv = new ModelAndView("registro");
+
+        ItemEstoque itemEstoqueid = itemService.findItemOrThrow(id);
+        mv.addObject("itemEstoque", itemEstoqueid);
+        return mv;
 
     }
 

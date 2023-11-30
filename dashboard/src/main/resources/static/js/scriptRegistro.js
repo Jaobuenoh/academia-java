@@ -7,9 +7,10 @@ fetch("http://localhost:8080/api/tipo_item")
     data.forEach(function (dto) {
       var option = document.createElement("option");
 
-      option.value = dto.id;
+      option.value = dto.id_tipo_item_estoque;
       option.text = dto.descricao_tipo_item_estoque;
       columnNameSelect.appendChild(option);
+
 
     });
   })
