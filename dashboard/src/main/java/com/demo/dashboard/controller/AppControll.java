@@ -5,24 +5,24 @@ import com.demo.dashboard.model.ItemEstoque;
 import com.demo.dashboard.model.TipoItemEstoque;
 import com.demo.dashboard.services.ItemService;
 
+import com.demo.dashboard.services.TipoService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.servlet.ModelAndView;
-
-
-import java.util.*;
 
 
 @Controller
 public class AppControll {
 
     private final ItemService itemService;
+    private final TipoService tipoService;
 
-    public AppControll(ItemService itemService) {
+    public AppControll(ItemService itemService, TipoService tipoService) {
         this.itemService = itemService;
+        this.tipoService = tipoService;
     }
 
 
@@ -48,6 +48,7 @@ public class AppControll {
     }
 
 
+    @Transactional
     @GetMapping("/registro")
     public ModelAndView registro() {
         ModelAndView mv = new ModelAndView("registro");
@@ -85,12 +86,11 @@ public class AppControll {
 
     @GetMapping("/edit/{id}")
     public ModelAndView editar(@PathVariable("id") Long id) {
-        ModelAndView mv = new ModelAndView("registro");
+        ModelAndView mv = new ModelAndView("edit");
 
         ItemEstoque itemEstoqueid = itemService.findItemOrThrow(id);
         mv.addObject("itemEstoque", itemEstoqueid);
         return mv;
-
     }
 
 
@@ -99,6 +99,21 @@ public class AppControll {
         ModelAndView mv = new ModelAndView("error");
         mv.addObject("error");
         return mv;
+    }
+
+    @GetMapping("/addType")
+    public ModelAndView addType(){
+        ModelAndView mv = new ModelAndView("addType");
+        mv.addObject("tipoItemEstoque", new TipoItemEstoque());
+
+        return mv;
+    }
+
+    @PostMapping("/addType")
+    public String typeItem(TipoItemEstoque tipoItemEstoque){
+        tipoService.save(tipoItemEstoque);
+
+        return "redirect:/registro";
     }
 }
 
