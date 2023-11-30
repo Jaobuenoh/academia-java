@@ -20,11 +20,18 @@ public class AppControll {
     private final ItemService itemService;
     private final TipoService tipoService;
 
+
     public AppControll(ItemService itemService, TipoService tipoService) {
         this.itemService = itemService;
         this.tipoService = tipoService;
     }
 
+
+    @GetMapping("/login")
+    public ModelAndView login() {
+        ModelAndView mv = new ModelAndView("login");
+        return mv;
+    }
 
     @GetMapping("/home")
     public ModelAndView home() {
