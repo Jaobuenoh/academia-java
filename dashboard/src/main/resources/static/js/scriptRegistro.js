@@ -1,14 +1,17 @@
 var columnNameSelect = document.getElementById("columnNameSelect");
 
 // Fetch data from the Spring Boot endpoint using AJAX
-fetch("http://localhost:8080/api/data")
+fetch("http://localhost:8080/api/tipo_item")
   .then((response) => response.json())
   .then((data) => {
     data.forEach(function (dto) {
       var option = document.createElement("option");
-      option.value = dto.id;
-      option.text = dto.descricao;
+
+      option.value = dto.id_tipo_item_estoque;
+      option.text = dto.descricao_tipo_item_estoque;
       columnNameSelect.appendChild(option);
+
+
     });
   })
   .catch((error) => console.error("Error fetching data:", error));

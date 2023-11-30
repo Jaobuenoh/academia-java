@@ -1,5 +1,6 @@
 package com.demo.dashboard.model;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -181,6 +181,13 @@ select {
   font-size: 15px;
 }
 
+.novoTipoItem:hover {
+  cursor: pointer;
+  background: #cc5800;
+  color: #e6e6e6;
+  transition: 0.3s;
+}
+
 .button-cadastrar {
   padding-block: 0;
   padding-inline: 0;

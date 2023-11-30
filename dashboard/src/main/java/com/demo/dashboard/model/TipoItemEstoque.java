@@ -1,5 +1,7 @@
 package com.demo.dashboard.model;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +23,7 @@ public class TipoItemEstoque {
     private Long id_tipo_item_estoque;
     private String descricao_tipo_item_estoque;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "tipoItemEstoque")
     private List<ItemEstoque> itemEstoques;
 
