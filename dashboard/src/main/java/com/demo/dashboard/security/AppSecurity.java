@@ -1,4 +1,4 @@
-package com.demo.dashboard.controller;
+package com.demo.dashboard.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

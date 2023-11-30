@@ -1,90 +1,90 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Cadastro Peças</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style_register.css">
+  <meta charset="UTF-8">
+  <title>Lista de Itens</title>
+  <!--   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="/css/styleList.css">
+  <link rel="stylesheet" href="/static/css/styleList.css">
 
-    <noscript>
-
-        <meta http-equiv="refresh" content="0;url=http://localhost:8080/malandro_sem_script">
-        
-    </noscript>
-
-    <style>
-        body {
-            background-color: #343a40;
-            background-size: 1980px 1080px;
-            background-position: top center;
-            padding: 100px
-            
-        }
-
-        table, th, tr, td {
-            background-color: #46494d;
-            opacity: 1;
-            border: 1px solid black;
-
-        }
-
-        .list-name, td{
-            text-align: center;
-        }
-
-        div.busca{
-            position: relative;
-
-            top: -10px;
-            left: 8px;
-            
-        }
-
-        
-        
-
-
-    </style>
-
+  <!--  <noscript>-->
+  <!--    <meta http-equiv="refresh" content="0;url=http://localhost:8080/malandro_sem_script">-->
+  <!--  </noscript>-->
 </head>
+
 <body>
+  <!-- COMECO DO ESTILO PADRÃO ENTRE PAGINAS -->
+  <header id="header" class="header">
+    <h1 id="header-h1">Stock Controller</h1>
+    <nav class="navegacao">
+      <div>
+        <form method="GET" action="/home">
+          <button class="nav-botao-home">Home</button>
+        </form>
+      </div>
+      <div class="teste">
+        <ul class="nav-menu">
+          <li id="teste" class="item-menu">
+            <form class="centro-button" method="GET" action="/c_soon">
+              <button class="nav-botao" method="GET" action="/c_soon">Cadastrar Fornecedor</button>
+            </form>
+          </li>
+          <li class="item-menu">
+            <form method="GET" action="/registro">
+              <button type="submit" class="nav-botao" method="GET" action="/registro">Cadastar Item</button>
+            </form>
+          </li>
+          <li class="item-menu">
+            <form class="centro-button" method="GET" action="/c_soon">
+              <button class="nav-botao" method="GET" action="/c_soon">Listar Fornecedor</button>
+            </form>
+          </li>
+          <li class="item-menu">
+            <form method="GET" action="/list">
+              <button type="submit" class="nav-botao" method="GET" action="/list">Lista Itens</button>
+            </form>
+          </li>
+          <!-- <li sec:authorize="isAuthenticated()">
+                  <form method="POST" th:action="@{/logout}">
+                      <a type="submit" class="btn btn-light py-2 test-position">Logout</a>
+                  </form>
+              </li> -->
+        </ul>
+      </div>
+      <div id="invisible-box"></div>
+    </nav>
+  </header>
+  <!-- FINAL DO ESTILO PADRÃO ENTRE PAGINAS -->
 
-<form method="GET" action="/list">
-    <table id="table-id" class="table">
-
-        <div class="busca">
-            <div class="col-sm-12 row">
-              
-                <input type="text" id="inputItemId" onkeyup="procurarItemId()"
-                    placeholder="Localizar pelo número" title="Type in a name"
-                    class="form-control w-25 mb-2 m-2" /> 
-                   
-                    <input type="text" id="inputNome" onkeyup="procurarItemNome()"
-                    placeholder="Localizar pelo nome" title="Type in a name"
-                    class="form-control w-50  mb-2 m-2" />
-                    
-                  
-            </div>
-            
+  <main class="container">
+    <nav class="busca">
+      <div class="dropdown">
+        <button class="btn-novo">Cadastro</button>
+        <div class="dropdown-content">
+          <a href="#">Novo Item</a>
+          <a href="#">Novo Tipo de Item</a>
         </div>
+      </div>
+      <input type="text" id="inputItemId" onkeyup="procurarItemId()" placeholder="Localizar pelo número" title="Type in a name"/>
+      <input type="text" id="inputNome" onkeyup="procurarItemNome()" placeholder="Localizar pelo nome" title="Type in a name"/>
+    </nav>
 
-        
-
-        
+    <form method="GET" action="/list">
+      <table id="table-id" class="tabela">
         <thead>
-        <tr>
+          <tr>
             <th class="list-name" scope="col">#</th>
             <th class="list-name" scope="col">Item</th>
             <th class="list-name" scope="col">Quantidade</th>
             <th class="list-name" scope="col">Data Lote</th>
             <th class="list-name" scope="col">Validade</th>
             <th class="list-name" scope="col">Tipo de Item</th>
-            <th class="list-name" scope="col">Edit/Delete</th>
-        </tr>
+            <th class="list-name" scope="col">Opções</th>
+          </tr>
         </thead>
         <tbody>
-        <tr data-th-each="itemEstoque : ${itemService}">
+          <tr data-th-each="itemEstoque : ${itemService}">
             <td data-th-text="${itemEstoque.id_item_estoque}"></td>
             <td data-th-text="${itemEstoque.lote_item_estoque}"></td>
             <td data-th-text="${itemEstoque.quantidade_item_estoque}"></td>
@@ -92,117 +92,25 @@
             <td data-th-text="${itemEstoque.validade_item_estoque}"></td>
             <td data-th-text="${itemEstoque.tipoItemEstoque.descricao_tipo_item_estoque}"></td>
             <td>
-                <a class="btn btn-dark" th:href="@{'/edit/'+${itemEstoque.id_item_estoque}}" onclick="confirmEdit(event)"> Edit </a>
-
-                <a class="btn btn-danger" th:href="@{'/delete/'+${itemEstoque.id_item_estoque}}" onclick="confirmDelete(event)"> Delete </a>
+              <a class="edit" th:href="@{'/edit/'+${itemEstoque.id_item_estoque}}" onclick="confirmEdit(event)"> Edit </a>
+              <a class="delete" th:href="@{'/delete/'+${itemEstoque.id_item_estoque}}" onclick="confirmDelete(event)"> Delete </a>
             </td>
-
-
-        </tr>
-
+          </tr>
         </tbody>
+      </table>
+    </form>
+  </main>
+  <!-- <div class="d-flex justify-content-center position-home">
+      <form class="centro-button" method="GET" action="/home">
+        <button class="btn btn-danger m-3">Home</button>
+      </form>
+    </div> -->
 
-    </table>
-</form>
-
-<form method="GET" action="/registro">
-    <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-dark">Cadastar Novamente</button>
-    </div>
-</form>
-
-<div class="d-flex justify-content-center position-home">
-
-  <form class="centro-button" method="GET" action="/home">
-      <button class="btn btn-danger m-3">Home</button>
-  </form>
-
-
-</div>
-
-<div class="container-fluid d-flex flex-column vh-100"></div>
-  
-<footer class="fixed-bottom bg-dark py-3">
-    <div class="container text-light text-center">
-      <p class="display-6 mb-3">ACADEMIA JAVA - ATOS&UFN</p>
-      <span class="text-white-50">&copy; 2023 Copyright: Desenvolvido por João Pedro Alves Bueno</span>
-    </div>
+  <footer id="footer">
+    <h1 id="footer-h1">Alguns Direitos Reservados</h1>
   </footer>
-</div>
-
-
-
-
-<script>
-
-    // Validações para não realizar auterações sem necessidade
-    function confirmEdit(event) {
-        event.preventDefault();
-
-        if (confirm("Tem certeza que deseja editar?")) {
-            // Se o usuário confirmar a edição, redirecione para o URL de edição
-            window.location.href = event.target.getAttribute('href');
-        } else {
-            // Caso contrário, não faça nada
-            return false;
-        }
-    }
-
-    function confirmDelete(event) {
-        event.preventDefault(); // Impede o redirecionamento padrão
-        if (confirm("Tem certeza que deseja excluir?")) {
-            // Se o usuário confirmar a exclusão, redirecione para o URL de exclusão
-            window.location.href = event.target.getAttribute('href');
-        } else {
-            // Caso contrário, não faça nada
-            return false;
-        }
-    }
-
-
-    // Busca do items e suas especificações
-
-    function procurarItemNome() {
-  var input, toUpperCase, table, tr, td, i, thingValue;
-  input = document.getElementById("inputNome");
-  toUpperCase = input.value.toUpperCase();
-  table = document.getElementById("table-id");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-        thingValue = td.textContent || td.innerText;
-      if (thingValue.toUpperCase().indexOf(toUpperCase) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-
-function procurarItemId() {
-  var input, toUpperCase, table, tr, td, i, thingValue;
-  input = document.getElementById("inputItemId");
-  toUpperCase = input.value.toUpperCase();
-  table = document.getElementById("table-id");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-        thingValue = td.textContent || td.innerText;
-      if (thingValue.toUpperCase().indexOf(toUpperCase) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-
-
-
-</script>
-
+  <script src="/static/js/scriptList.js"></script>
+  <script src="/js/scriptList.js"></script>
 </body>
+
 </html>
