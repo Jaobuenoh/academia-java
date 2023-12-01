@@ -28,7 +28,13 @@ public class AppControll {
 
 
     @GetMapping("/login")
-    public ModelAndView login() {
+    public String getLogin() {
+        return "login";
+    }
+
+
+    @GetMapping("/")
+    public ModelAndView login(){
         ModelAndView mv = new ModelAndView("login");
         return mv;
     }

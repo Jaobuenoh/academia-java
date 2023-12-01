@@ -2,7 +2,8 @@ body {
   margin: 0;
   height: 100vh;
   position: relative;
-  /*background-image: url(https://jaobuenoh.github.io/code-stock/dashboard/src/main/resources/static/images/fingerprintLaranja.svg);*/
+  background-image: url(/images/fingerprintLaranja.svg);
+
 }
 
 main {
@@ -68,4 +69,10 @@ h1 {
   background: #cc5800;
   color: #e6e6e6;
   transition: 0.3s;
+}
+
+.input_error{
+  text-shadow: -0px 0px 5px darkorange;
+  font-size: 16px;
+
 }

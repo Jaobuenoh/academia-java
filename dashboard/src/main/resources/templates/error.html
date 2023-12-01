@@ -1,12 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Jorge</title>
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/styleLogin.css">
+    <link rel="stylesheet" href="/css/styleLogin.css">
 
-<div style="font-size: 200px">Jorge</div>
+    <title>Login</title>
+</head>
+
+<body>
+<main class="container">
+    <form method="POST" th:action="@{/login}">
+        <section class="logo">
+            <h1>Stock Controller</h1>
+        </section>
+        <section class="login">
+            <div class="input_error">&nbsp;Credenciais incorretas!</div>
+            <input type="email" placeholder="Credenciais incorretas!" id="login" name="email">
+            <input type="password" placeholder="Senha" id="senha" name="password">
+            <button type="submit" class="button-login">Login</button>
+        </section>
+    </form>
+</main>
 
 </body>
+
 </html>
