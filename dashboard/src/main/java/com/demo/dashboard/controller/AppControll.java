@@ -33,6 +33,17 @@ public class AppControll {
         return mv;
     }
 
+    @GetMapping("/login_error")
+    public ModelAndView loginError(){
+        ModelAndView mv = new ModelAndView("error");
+        return mv;
+    }
+
+    @GetMapping("/c_soon")
+    public ModelAndView cSoon(){
+        return new ModelAndView("c_soon");
+    }
+
     @GetMapping("/home")
     public ModelAndView home() {
         ModelAndView mv = new ModelAndView("home");
@@ -46,13 +57,6 @@ public class AppControll {
         return mv;
     }
 
-
-    @GetMapping("/index")
-    public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("index");
-        mv.addObject("itemService", itemService.getAll());
-        return mv;
-    }
 
 
     @Transactional
