@@ -31,10 +31,9 @@ public class AppSecurity {
                         .requestMatchers("").permitAll()
                         .anyRequest().authenticated()
                 );
-        http
-                .formLogin()
+        http .formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/login")
+//                .loginProcessingUrl("/login")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/home")
@@ -46,6 +45,7 @@ public class AppSecurity {
                 .logoutSuccessUrl("/?logout")
                 .and()
                 .httpBasic();
+
 
 
 
