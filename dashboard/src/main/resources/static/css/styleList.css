@@ -1,0 +1,271 @@
+/* COMEÇO DO ESTILO PADRÃO ENTRE PAGINAS */
+html {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  position: relative;
+  background-image: url(/images/fingerprintLaranja.svg);
+}
+
+body::after {
+  content: "";
+  display: block;
+  height: 70px; /* Set same as footer's height */
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-weight: 900;
+  margin: 0;
+  text-decoration: none;
+  color: #f2f2f2;
+}
+
+.header {
+  padding: 10px 0px 20px;
+  background: #212832;
+}
+
+.navegacao {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+.teste {
+  display: flex;
+}
+
+.nav-menu {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  list-style-type: none;
+
+  /* pula uma linha quando o conteudo nao cabe na linha */
+  flex-wrap: wrap;
+}
+
+.nav-botao-home {
+  padding-block: 0;
+  padding-inline: 0;
+  border: none;
+  text-decoration: none;
+  color: #f2f2f2;
+  background: #f96c00;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+}
+
+.nav-botao {
+  padding-block: 0;
+  padding-inline: 0;
+  border: none;
+  text-decoration: none;
+  color: #f2f2f2;
+  background: #f96c00;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+}
+
+#invisible-box {
+  height: 45px;
+  width: 100px;
+}
+
+/* estilo aplicado quando passa o mouse por cima do botao */
+.nav-botao:hover {
+  cursor: pointer;
+  background: #cc5800;
+  color: #e6e6e6;
+  transition: 0.3s;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #212832;
+}
+
+#footer-h1 {
+  padding: 15px 0 10px;
+}
+
+/* FINAL DO ESTILO PADRÃO ENTRE PAGINAS */
+
+.container {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+}
+
+.busca {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 5px;
+  margin: 15px;
+  border: solid #f96c00;
+  border-radius: 4px;
+  background: #212832;
+}
+
+.btn-novo {
+  padding-block: 0;
+  padding-inline: 0;
+  border: none;
+  text-decoration: none;
+  color: #f2f2f2;
+  background: #f96c00;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f2f2f2;
+  /* min-width: 160px; */
+  /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #212832;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  text-transform: uppercase;
+}
+
+.dropdown-content a:hover {
+  background-color: #e6e6e6;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .btn-novo {
+  cursor: pointer;
+  background: #cc5800;
+  color: #e6e6e6;
+  transition: 0.3s;
+}
+
+.busca input {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.container form {
+  display: flex;
+  justify-content: center;
+}
+
+.tabela {
+  background: #212832;
+  padding: 5px;
+  margin: 15px;
+  border: solid #f96c00;
+  border-radius: 4px;
+  border-collapse: collapse;
+}
+
+.tabela thead {
+  background: #212832;
+}
+
+.tabela th {
+  padding: 4px;
+  color: #f2f2f2;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  text-align: start;
+}
+
+.tabela tbody {
+  background: #bfbfbf;
+}
+
+.tabela td {
+  padding: 4px;
+  color: #212832;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+.tabela tr:nth-child(even) {
+  background-color: #999999;
+}
+
+.tabela td:first-child {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.edit {
+  text-decoration: none;
+  margin-left: 10px;
+  color: #f2f2f2;
+  background: #f96c00;
+  padding: 3px 8px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.edit:hover {
+  margin-left: 10px;
+  background: #cc5800;
+  color: #e6e6e6;
+  padding: 3px 8px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.delete {
+  text-decoration: none;
+  margin-left: 10px;
+  color: #f2f2f2;
+  background: red;
+  padding: 3px 8px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.delete:hover {
+  margin-left: 10px;
+  color: #e6e6e6;
+  background: darkred;
+  padding: 3px 8px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}

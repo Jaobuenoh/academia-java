@@ -17,6 +17,7 @@
     <header id="header" class="header">
                 <h1 id="header-h1">Stock Controller</h1>
         <nav class="navegacao">
+            <div id="invisible-box"></div>
             <ul class="nav-menu">
                 <li class="item-menu">
                     <div>
@@ -40,26 +41,17 @@
                         <button type="submit" class="nav-botao" method="GET" action="/list">Lista Itens</button>
                     </form>
                 </li>
-                <!-- <li sec:authorize="isAuthenticated()">
+                 <li sec:authorize="isAuthenticated()">
                     <form method="POST" th:action="@{/logout}">
-                        <a type="submit" class="btn btn-light py-2 test-position">Logout</a>
+                        <button class="log_out" type="submit">Logout</button>
                     </form>
-                </li> -->
+                </li>
             </ul>
         </nav>
     </header>
-    <!-- nao sei o que essa parte abaixo esta fazendo
-                        <div class="container">
-                            <div class="ferramenta">
-                            </div>
-                            <div class="ferramenta1">
-                            </div>
-                        </div> -->
-
-    <button type="button" onclick="toggle()" id="muda-cor-botao" href="">Cor</button>
 
     <footer>
-        <h1 id="footer-h1">Alguns Direitos Reservados</h1>
+        <h1 id="footer-h1">Projeto de Extensão - UniFil</h1>
     </footer>
 
     <script src="/js/scriptHome.js"></script>

@@ -28,6 +28,10 @@ public class ItemEstoque {
     @JoinColumn(name = "tipo_item_estoque", referencedColumnName = "id_tipo_item_estoque", nullable = true)
     private TipoItemEstoque tipoItemEstoque;
 
+    @ManyToOne
+    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = true)
+    private Account account;
+
     public ItemEstoque(String lote_item_estoque, String quantidade_item_estoque, String data_entrada_item_estoque, String validade_item_estoque) {
         this.lote_item_estoque = lote_item_estoque;
         this.quantidade_item_estoque = quantidade_item_estoque;

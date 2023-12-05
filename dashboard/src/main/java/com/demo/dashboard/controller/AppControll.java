@@ -20,11 +20,35 @@ public class AppControll {
     private final ItemService itemService;
     private final TipoService tipoService;
 
+
     public AppControll(ItemService itemService, TipoService tipoService) {
         this.itemService = itemService;
         this.tipoService = tipoService;
     }
 
+
+    @GetMapping("/login")
+    public String getLogin() {
+        return "login";
+    }
+
+
+    @GetMapping("/")
+    public ModelAndView login(){
+        ModelAndView mv = new ModelAndView("login");
+        return mv;
+    }
+
+    @GetMapping("/login_error")
+    public ModelAndView loginError(){
+        ModelAndView mv = new ModelAndView("error");
+        return mv;
+    }
+
+    @GetMapping("/c_soon")
+    public ModelAndView cSoon(){
+        return new ModelAndView("c_soon");
+    }
 
     @GetMapping("/home")
     public ModelAndView home() {
@@ -39,13 +63,6 @@ public class AppControll {
         return mv;
     }
 
-
-    @GetMapping("/index")
-    public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("index");
-        mv.addObject("itemService", itemService.getAll());
-        return mv;
-    }
 
 
     @Transactional

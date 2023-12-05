@@ -96,27 +96,26 @@
 </main>
 <section id="popup">
     <section class="popup-sub-container">
-        <!-- O Form abaixo vai ser arrumado apos o metodo estar certo -->
-        <form class="form-post-container" method="POST" action="/addType" th:object="${tipoItemEstoque}">
-            <h2>Cadastrar Tipo de Item</h2>
-            <div class="tabela-tipoitem">
-                <div>
-                    <label></label>
-                    <input type="hidden" th:value="${tipoItemEstoque.id_tipo_item_estoque}" name="id_tipo_item_estoque" />
-                </div>
-                <div>
-                    <label for="descricao"></label>
-                    <input type="text" id="descricao-tipo" name="descricao_tipo_item_estoque" th:value="${tipoItemEstoque.descricao_tipo_item_estoque}" placeholder="Descrição" />
-                </div>
-                <button type="submit" class="popup-cadastrar">Cadastrar</button>
-                <a class="popup-cadastrar" onclick="toggle()">Cancelar</a>
+        <form class="form-post-container" method="POST" action="/addType">
+        <h2>Cadastrar Tipo de Item</h2>
+        <div class="tabela-tipoitem">
+            <div>
+                <label></label>
+                <input type="hidden" />
             </div>
+            <div>
+                <label for="descricao"></label>
+                <input type="text" id="id_tipo_item_estoque" name="descricao_tipo_item_estoque" placeholder="Descrição" />
+            </div>
+            <button type="submit" class="popup-cadastrar">Cadastrar</button>
+            <a class="popup-cadastrar" onclick="toggle()">Cancelar</a>
+        </div>
         </form>
     </section>
 </section>
 
 <footer id="footer">
-    <h1 id="footer-h1">Alguns Direitos Reservados</h1>
+    <h1 id="footer-h1">Projeto de Extensão - UniFil</h1>
 </footer>
 
 <script src="/js/scriptRegistro.js"></script>
