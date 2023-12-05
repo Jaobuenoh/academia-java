@@ -1,7 +1,7 @@
 var columnNameSelect = document.getElementById("columnNameSelect");
 
 // Fetch data from the Spring Boot endpoint using AJAX
-fetch("http://localhost:8080/api/tipo_item")
+fetch("/api/tipo_item")
   .then((response) => response.json())
   .then((data) => {
     data.forEach(function (dto) {
