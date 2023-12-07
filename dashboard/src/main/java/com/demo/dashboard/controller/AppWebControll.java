@@ -1,31 +1,18 @@
 package com.demo.dashboard.controller;
 
-import org.springframework.context.annotation.Bean;
+
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 
 @Configuration
-public class AppWebControll {
+public class AppWebControll implements WebMvcConfigurer {
 
-    @Bean
-    public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-
-        // permitir acesso de qualquer origem
-        config.addAllowedOrigin("*");
-
-        // acesso a todos os métodos (GET, POST, PUT, DELETE, etc.)
-        config.addAllowedMethod("*");
-
-        // permitir todos os cabeçalhos
-        config.addAllowedHeader("*");
-
-        // esta linha é para configurar o CORS globalmente para toda a aplicação
-        source.registerCorsConfiguration("/**", config);
-
-        return new CorsFilter(source);
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/api/**")
+                .allowedOrigins("http://127.0.0.1:5500")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS",  "HEAD", "TRACE", "CONNECT");
     }
 }

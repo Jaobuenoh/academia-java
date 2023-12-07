@@ -8,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 
 @Configuration
 @EnableWebSecurity
@@ -21,10 +23,10 @@ public class AppSecurity {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable())
+                .cors(withDefaults()).csrf(csrf -> csrf.disable())
                 .headers(headers -> headers.frameOptions().disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/css/**", "", "/images/**", "", "").permitAll()
+                        .requestMatchers("/css/**", "", "/images/**", "/api/list", "").permitAll()
                         .requestMatchers("/").permitAll()
                         .requestMatchers("").permitAll()
                         .requestMatchers("").permitAll()
@@ -33,7 +35,7 @@ public class AppSecurity {
                 );
         http .formLogin()
                 .loginPage("/login")
-//                .loginProcessingUrl("/login")
+                .loginProcessingUrl("/login")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/home")
@@ -45,6 +47,8 @@ public class AppSecurity {
                 .logoutSuccessUrl("/?logout")
                 .and()
                 .httpBasic();
+
+
 
 
 
