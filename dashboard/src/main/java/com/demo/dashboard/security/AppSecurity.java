@@ -24,12 +24,9 @@ public class AppSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .cors(withDefaults()).csrf(csrf -> csrf.disable())
-                .headers(headers -> headers.frameOptions().disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/css/**", "", "/images/**", "/api/list", "").permitAll()
                         .requestMatchers("/").permitAll()
-                        .requestMatchers("").permitAll()
-                        .requestMatchers("").permitAll()
                         .requestMatchers("").permitAll()
                         .anyRequest().authenticated()
                 );

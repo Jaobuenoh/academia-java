@@ -1,41 +1,32 @@
 package com.demo.dashboard.services;
 
-
-import com.demo.dashboard.model.Account;
+import com.demo.dashboard.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
-@Component("userDetailsService")
+
+
+
+@Service
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private AccountService accountService;
+    private AccountRepository repository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Account> optionalAccount = accountService.findOneByEmail(email);
-        if (!optionalAccount.isPresent()) {
+
+        repository.findOneByEmail(email);
+
+        if (email == null) {
             throw new UsernameNotFoundException("Not found :c");
         }
 
-        Account account = optionalAccount.get();
-
-        List<GrantedAuthority> grantedAuthorities = account
-                .getAuthorities()
-                .stream()
-                .map(authority -> new SimpleGrantedAuthority(authority.getName()))
-                .collect(Collectors.toList());
-
-        return new org.springframework.security.core.userdetails.User(account.getEmail(), account.getPassword(), grantedAuthorities);
+       return repository.findOneByEmail(email);
 
     }
 }

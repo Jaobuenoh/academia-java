@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/auth")
 public class AppRestControll {
 
     private final ItemService itemService;
@@ -46,6 +46,8 @@ public class AppRestControll {
 
         return listaTipo;
     }
+
+
 
 
 }

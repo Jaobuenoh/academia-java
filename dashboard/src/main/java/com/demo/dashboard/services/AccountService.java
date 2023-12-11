@@ -31,6 +31,6 @@ public class AccountService {
     }
 
     public Optional<Account> findOneByEmail(String email) {
-        return accountRepository.findOneByEmail(email);
+        return accountRepository.findByEmail(email);
     }
 }

@@ -3,6 +3,7 @@ package com.demo.dashboard.util;
 
 import com.demo.dashboard.model.Account;
 import com.demo.dashboard.model.Authority;
+import com.demo.dashboard.model.UserRole;
 import com.demo.dashboard.repository.AuthorityRepository;
 import com.demo.dashboard.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class UserConfig implements CommandLineRunner {
         Iterable<Account> accounts = accountService.getAll();
 
 
-        Authority user = new Authority();
+        UserRole user = new Authority();
         user.setName("ROLE_USER");
         authorityRepository.save(user);
 
